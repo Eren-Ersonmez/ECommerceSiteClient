@@ -1,0 +1,21 @@
+.product-image-card {
+  width: 250px;
+  height:250px;
+  float: left;
+  margin: 5px 5px 5px 5px;
+}
+
+.btn {
+  background-color: red;
+  color: aliceblue;
+  text-align: center;
+  float: right;
+  border-radius: 8px; 
+  width: 100%;
+}
+
+img {
+  height: 180px;
+  object-fit: contain;
+  margin: 0 -16px 0 -16px;
+}

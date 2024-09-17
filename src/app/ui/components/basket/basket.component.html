@@ -1,0 +1,67 @@
+<div class="container py-5">
+    <div class="col-md-12">
+        <!-- Ürünler Tablosu -->
+        <table class="table table-hover table-bordered align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Resim</th>
+                    <th scope="col">Ürün Adı</th>
+                    <th scope="col">Adet</th>
+                    <th scope="col">Sil</th>
+                    <th scope="col">Fiyat</th>
+                    <th scope="col">Tutar</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let item of carts">
+                <tr>
+                    <!-- Ürün Resmi -->
+                    <td>
+                        <img *ngIf="(item.product.img && item.product.img.length > 0)" [src]="item.product.img[0].filePath" class="img-thumbnail" height="80px" width="100px">
+                        <img *ngIf="!(item.product.img && item.product.img.length > 0)" src="assets/no-camera.png" class="img-thumbnail" height="80px" width="100px">
+                    </td>
+                    <!-- Ürün Adı -->
+                    <td class="text-primary fw-bold">{{ item.product.name }}</td>
+                    <!-- Adet Kontrolü -->
+                    <td #countTd>
+                        <div class="input-group">
+                            <button class="btn btn-outline-secondary" (click)="updateCartCountMinus(item,countTd)">-</button>
+                            <input type="text" class="form-control text-center" [value]="item.count" disabled style="max-width: 50px;">
+                            <button class="btn btn-outline-secondary" (click)="updateCartCountPlus(item)">+</button>
+                        </div>
+                    </td>
+                    <!-- Silme Butonu -->
+                    <td appDelete controller="shoppingCarts" [id]="item.id" (callback)="getShoppingCarts()">
+                    </td>
+                    <!-- Fiyat -->
+                    <td>{{ item.price }} TL</td>
+                    <!-- Toplam Fiyat -->
+                    <td>{{ item.price * item.count }} TL</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5" class="text-end fw-bold">
+                        <span class="fs-5">TOPLAM TUTAR</span>
+                    </td>
+                    <td class="bg-danger text-white fs-5 text-center">
+                        {{ getTotalPrice() }} TL
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <!-- Alışverişe Devam ve Tamamlama Butonları -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <a routerLink="/products" class="btn btn-primary btn-lg w-100">
+                    <i class="fas fa-arrow-left me-2"></i> Alışverişe Devam Et
+                </a>
+            </div>
+            <div class="col-md-6">
+                <a routerLink="/orders/create" class="btn btn-warning btn-lg w-100">
+                    <i class="fas fa-check me-2"></i> Alışverişi Tamamla
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

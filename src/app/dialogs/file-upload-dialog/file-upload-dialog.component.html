@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Dikkat</h2>
+<mat-dialog-content class="mat-typography">
+   <p>Bu dosyaları göndermek istediğinize eminsiniz?</p>
+  </mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>İptal</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Evet</button>
+</mat-dialog-actions>

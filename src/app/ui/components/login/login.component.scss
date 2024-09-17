@@ -1,0 +1,26 @@
+.social-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; /* Buton genişliği */
+    height: 30px; /* Buton yüksekliği */
+    border-radius: 50%; /* Yuvarlak buton */
+    border: none;
+    font-size: 18px; /* İkon boyutu */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .facebook-button {
+    background-color: #4267b2; /* Facebook'un marka rengi */
+  }
+  
+  .facebook-button:hover {
+    background-color: #365899; /* Hover durumunda koyu mavi */
+  }
+  
+  .social-button i {
+    font-size: 15px; /* İkon boyutu */
+  }
+  

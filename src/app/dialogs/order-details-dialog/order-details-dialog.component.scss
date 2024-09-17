@@ -1,0 +1,13 @@
+::ng-deep .mat-dialog-container {
+    background-color: #ffffff; /* Arka plan rengini beyaz yapar */
+    color: #000000; /* Yazı renginin siyah olduğundan emin olur */
+  }
+  
+  ::ng-deep .mat-dialog-title {
+    color: #000; /* Dialog başlık yazı rengini siyah yapar */
+  }
+  
+  ::ng-deep .container {
+    padding: 20px;
+  }
+  

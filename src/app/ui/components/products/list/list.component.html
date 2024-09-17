@@ -1,0 +1,80 @@
+<div class="container mt-5">
+  <div class="row">
+    <!-- Sabit Sidebar -->
+    <div class="col-lg-3">
+      <div class="card sticky-sidebar shadow-sm">
+        <div class="card-header bg-dark text-white">Kategoriler</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item hover-highlight" style="cursor: pointer;">
+            <a class="text-dark text-decoration-none" (click)="getProducts(0)">Tüm Kategoriler</a>
+          </li>
+          <li class="list-group-item hover-highlight" *ngFor="let item of categoryData">
+            <a class="text-dark text-decoration-none" style="cursor: pointer;" (click)="categoryProducts(item.id)">
+              {{item.name}}
+            </a>
+          </li>
+        </ul>
+        <div class="card-header bg-dark text-white">Fiyat Aralığı</div>
+        <div class="card-body">
+          <h5>Fiyat Aralığı</h5>
+          <input type="range" class="form-range mb-2" min="0" max="50000" step="10" [(ngModel)]="priceRange.min">
+          <input type="range" class="form-range" min="50000" max="150000" step="10" [(ngModel)]="priceRange.max">
+          <p class="text-muted">{{priceRange.min}} TL - {{priceRange.max}} TL</p>
+        </div>
+        <div class="card-header bg-dark text-white" *ngIf="selectedCategoryId!=''">Markalar</div>
+        <ul class="list-group list-group-flush" *ngIf="selectedCategoryId!=''">
+          <li class="list-group-item hover-highlight" style="cursor: pointer;">
+            <a class="text-dark text-decoration-none" (click)="categoryProducts(selectedCategoryId)">Tüm Markalar</a>
+          </li>
+          <li class="list-group-item hover-highlight" *ngFor="let item of brandsData">
+            <a class="text-dark text-decoration-none" style="cursor: pointer;" (click)="brandProducts(item.id)">
+              {{item.name}}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Ürün Listesi -->
+    <div class="col-lg-9">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" *ngFor="let item of productData">
+          <div class="card h-100 product-card shadow-lg" *ngIf="item.price>=priceRange.min && item.price<=priceRange.max">
+            <div class="position-relative">
+              <img [src]="item.img[0].filePath" class="card-img-top rounded-top" 
+                   (mouseover)="startImageSlideshow(item)" 
+                   (mouseleave)="stopImageSlideshow(item)" 
+                   alt="Product Image">
+              <div class="position-absolute top-0 end-0 p-2 bg-light rounded-circle shadow-sm">
+                <span class="badge bg-success">{{item.price}} TL</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title text-truncate"><b>{{item.name}}</b></h5>
+              <p class="card-text">{{item.description | slice:0:60}}...</p>
+              <button (click)="addShoppingCart(item)" class="btn btn-primary w-100 mt-2 rounded-pill">Sepete Ekle</button>
+            </div>
+            <div class="card-footer bg-transparent border-top-0">
+              <a (click)="getProduct(item.id)" routerLink="/products/product" 
+                 class="btn btn-link text-decoration-none w-100 text-center text-primary">Ürün Detayları</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav aria-label="Page navigation example" class="my-4">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a class="page-link rounded-circle" (click)="getProducts(0)">Öncesi</a>
+          </li>
+          <li class="page-item" *ngFor="let page of [].constructor(productPageCount); let i = index">
+            <a class="page-link rounded-circle" (click)="getProducts(i)">{{i + 1}}</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link rounded-circle" (click)="getProducts(productPageCount-1)">Sonrası</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

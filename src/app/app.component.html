@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="" style="color: red;">TeknoXpress</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="">Anasayfa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="products">Ürünler</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="register" *ngIf="!authService.isAutherticated">Kayıt Ol</a>
+        </li>
+        <li class="nav-item" style="margin-right: 10px;">
+          <a class="btn btn-outline-success" routerLink="admin" *ngIf="authService.isAutherticated">Yönetim Paneli</a>
+        </li>
+        <form class="d-flex mx-auto justify-content-center" role="search">
+          <input class="form-control me-3" type="search" placeholder="Ara" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Arama</button>
+        </form>
+      </ul>
+      <li style="list-style: none; margin-right: 15px;">
+        <a routerLink="basket">
+          <img src="assets/basket.png" width="25px">
+        </a>
+      </li>
+
+      <!-- HESABIM Açılır Menü -->
+      <li class="nav-item dropdown" style="list-style: none; position: relative; margin-right: 50px;"
+    (mouseenter)="toggleDropdown(true)"
+    (mouseleave)="toggleDropdown(false)">
+  <a class="btn-custom" id="accountDropdown" role="button">
+    HESABIM
+  </a>
+  <div class="dropdown-menu" *ngIf="showDropdown">
+    <div class="dropdown-item">
+    </div>
+    <div class="dropdown-item">
+      <a routerLink="user/userInfos">Profilim</a>
+    </div>
+    <div class="dropdown-item">
+      <a routerLink="user/orders">Siparişlerim</a>
+    </div>
+    <div class="dropdown-item" *ngIf="authService.isAutherticated">
+      <a style="cursor: pointer;" (click)="signOut()">Çıkış Yap</a>
+    </div>
+    <div class="dropdown-item" *ngIf="!authService.isAutherticated">
+      <a style="cursor: pointer;" routerLink="login" >Giriş Yap</a>
+    </div>
+  </div>
+</li>
+
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+
+
+<ngx-spinner name="s1" type="ball-spin-fade"></ngx-spinner>
+<ngx-spinner name="s2" type="ball-spin-rotate"></ngx-spinner>
+<ngx-spinner name="s3" type="cog"></ngx-spinner>
+<ngx-spinner name="s4" type="square-jelly-box"></ngx-spinner>
+<ngx-spinner name="s5" type="timer"></ngx-spinner>
+<ngx-spinner name="s6" type="line-spin-clockwise-fade-rotating"></ngx-spinner>
+<ngx-spinner name="s7" type="fire"></ngx-spinner>

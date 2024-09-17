@@ -1,0 +1,13 @@
+<div class="content">
+    <h2 mat-dialog-title>Kategori Düzenleme</h2>
+    <mat-form-field >
+        <mat-label>Kategori Adı</mat-label>
+        <input matInput #txtName [placeholder]="categoryName">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button class="example-button-container" (click)="edit(txtName.value)">Kategori Düzenle</button>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close="true">Tamam</button>
+    </mat-dialog-actions>
+</div>
+

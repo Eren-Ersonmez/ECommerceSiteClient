@@ -1,0 +1,61 @@
+/* Ürün ve Galeri Tasarım Stilleri */
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.left-arrow, .right-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  padding: 0.5rem;
+  z-index: 10;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.left-arrow:hover, .right-arrow:hover {
+  background-color: #f8f9fa;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.img-gallery-thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.img-gallery-thumb.active {
+  border-color: #007bff;
+}
+
+.img-gallery-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.product-price {
+  font-size: 1.8rem;
+  color: #dc3545;
+}
+
+/* Kart ve Buton Hover Efektleri */
+.hover-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.like-icon {
+  cursor: pointer;
+  color: #6c757d;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.like-icon:hover {
+  color: #007bff;
+  transform: scale(1.2);
+}

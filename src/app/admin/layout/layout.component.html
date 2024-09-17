@@ -1,0 +1,10 @@
+<app-header></app-header>
+<mat-drawer-container class="admin-container">
+    <mat-drawer mode="side" opened id="side">
+        <app-side-bar></app-side-bar>
+    </mat-drawer>
+    <mat-drawer-content id="main">
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+<app-footer></app-footer>

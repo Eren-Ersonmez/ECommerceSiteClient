@@ -1,0 +1,55 @@
+<h2 mat-dialog-title>Sipariş Detayları</h2>
+<mat-dialog-content class="mat-typography mat-elevation-z4 order-dialog-content">
+  <mat-card *ngFor="let item of orderData" class="order-card">
+    <mat-divider></mat-divider>
+    <div class="order-details">
+      <div class="order-info">
+        <mat-list dense>
+          <mat-list-item>
+            <span mat-line><strong>Ad:</strong> {{item.address.addressOwnerName}}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span mat-line><strong>Soyad:</strong> {{item.address.addressOwnerSurname}}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span mat-line><strong>Telefon:</strong> {{item.address.phoneNumber}}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span mat-line><strong>Adres:</strong> {{item.address.content}}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span mat-line><strong>Semt:</strong> {{item.address.district}}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span mat-line><strong>Şehir:</strong> {{item.address.city}}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span mat-line><strong>Posta Kodu:</strong> {{item.address.postalCode}}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span mat-line><strong>Sipariş Tarihi:</strong> {{item.createdDate | date: 'dd.MM.yyyy HH:mm'}}</span>
+          </mat-list-item>
+        </mat-list>
+      </div>
+
+      <div class="order-items">
+        <mat-card class="item-card" *ngFor="let orderDetail of item.orderDetails">
+          <mat-card-content>
+            <h6 class="item-title">{{orderDetail.product.name}}</h6>
+            <small class="item-quantity">Adet: {{orderDetail.count}}</small>
+            <span class="item-price">{{orderDetail.count * orderDetail.price}} TL</span>
+          </mat-card-content>
+        </mat-card>
+        <mat-divider></mat-divider>
+        <div class="order-status">
+          <b>Sipariş Durumu: {{item.orderStatus}}</b>
+          <br><br>
+          <a class="btn btn-primary" *ngIf="getOrderStatus(item)!=null && role" (click)="changeOrderStatus(item)" [text]="getOrderStatus(item)"></a>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true">Tamam</button>
+</mat-dialog-actions>

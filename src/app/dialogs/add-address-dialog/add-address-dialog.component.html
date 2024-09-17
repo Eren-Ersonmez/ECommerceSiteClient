@@ -1,0 +1,53 @@
+<div class="mat-dialog-container">
+    <h2 style="color: black;" mat-dialog-title>Adres Ekle</h2>
+
+    <mat-dialog-content>
+      <form [formGroup]="addressForm" (ngSubmit)="onSubmit()" class="dialog-form">
+        <mat-form-field class="full-width">
+          <mat-label>Adres Başlığı</mat-label>
+          <input  formControlName="title" matInput placeholder="Adres Başlığı">
+        </mat-form-field>
+    
+        <mat-form-field class="full-width">
+          <mat-label>İsim</mat-label>
+          <input formControlName="name" matInput placeholder="İsim">
+        </mat-form-field>
+    
+        <mat-form-field class="full-width">
+          <mat-label>Soyisim</mat-label>
+          <input formControlName="surname" matInput placeholder="Soyisim">
+        </mat-form-field>
+    
+        <mat-form-field class="full-width">
+          <mat-label>Adres</mat-label>
+          <input formControlName="content" matInput placeholder="Adres">
+        </mat-form-field>
+    
+        <mat-form-field class="full-width">
+          <mat-label>Şehir</mat-label>
+          <input formControlName="city" matInput placeholder="Şehir">
+        </mat-form-field>
+    
+        <mat-form-field class="full-width">
+          <mat-label>İlçe</mat-label>
+          <input formControlName="district" matInput placeholder="İlçe">
+        </mat-form-field>
+    
+        <mat-form-field class="full-width">
+          <mat-label>Posta Kodu</mat-label>
+          <input formControlName="postalCode" matInput placeholder="Posta Kodu">
+        </mat-form-field>
+    
+        <mat-form-field class="full-width">
+          <mat-label>Telefon Numarası</mat-label>
+          <input formControlName="phoneNumber" matInput placeholder="Telefon Numarası">
+        </mat-form-field>
+        <button [disabled]="addressForm.invalid" mat-raised-button color="primary">Adres Ekle</button>
+      </form>
+    </mat-dialog-content>
+    
+    <mat-dialog-actions align="end">
+      <button style="color: black;" mat-button mat-dialog-close=true>Kapat</button>
+    </mat-dialog-actions>
+</div>
+

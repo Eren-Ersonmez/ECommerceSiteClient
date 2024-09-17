@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Ürün Resimleri</h2>
+<mat-dialog-content class="mat-typography">
+   <app-file-upload [options]="fileUploadOptions"></app-file-upload>
+
+   <mat-card class="product-image-card" appearance="outlined" *ngFor="let image of images">
+    <mat-card-header>
+    </mat-card-header>
+    <img mat-card-image [src]="image.filePath">
+    <mat-card-actions>
+      <button mat-button class="btn" (click)="deleteImage(image.id,$event)">Sil</button>
+    </mat-card-actions>
+  </mat-card>
+  
+  </mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Tamam</button>
+</mat-dialog-actions>

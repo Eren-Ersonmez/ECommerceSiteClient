@@ -1,0 +1,14 @@
+<mat-form-field >
+    <mat-label>Marka Adı</mat-label>
+    <input matInput #txtName>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Kategoriler</mat-label>
+    <mat-select  [(value)]="selectedCategoryId">
+      @for (item of categories; track item) 
+      {
+        <mat-option [value]="item.id">{{item.name}}</mat-option>
+      }
+    </mat-select>
+</mat-form-field>
+<button mat-raised-button class="example-button-container" (click)="create(txtName.value)">Marka Ekle</button>

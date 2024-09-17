@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="card-body" *ngFor="let item of cards">
+        <div class="card-header">
+          <p class="card-name">{{item.cardName}}</p>
+          <a  appDelete
+          controller="CreditCards" 
+          [id]="item.id"
+          (callback)="getCreditCards()"></a>
+        </div>
+        <div class="card-info-container">
+          <p class="card-number">{{item.cardNumber}}</p>
+          <p class="card-date">{{item.expirationDateMonth}}/{{item.expirationDateYear}}</p>
+          <p class="card-cvc">{{item.cvc}}</p>
+        </div>
+        <button class="btn btn-primary" (click)="editCreditCard()">Düzenle</button>
+      </div>
+</div>
+  <button style="margin: 25px;" class="btn btn-primary" (click)="addCreditCard()">Yeni Kart Ekle</button>

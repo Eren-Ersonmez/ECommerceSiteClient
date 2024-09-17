@@ -1,0 +1,8 @@
+<mat-drawer-container class="admin-container">
+    <mat-drawer mode="side" opened id="side">
+        <app-create (createdRole)="createdRole($event)"></app-create>
+    </mat-drawer>
+    <mat-drawer-content id="main">
+        <app-list></app-list>
+    </mat-drawer-content>
+</mat-drawer-container>

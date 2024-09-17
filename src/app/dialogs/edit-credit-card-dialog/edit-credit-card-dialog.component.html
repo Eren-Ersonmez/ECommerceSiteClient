@@ -1,0 +1,59 @@
+<div class="dialog-overlay">
+    <div class="dialog-container">
+      <h2 class="dialog-title">Kredi Kartını Düzenle</h2>
+      
+      <form class="card-edit-form">
+        <div class="form-group">
+          <label for="card-name">Kart Sahibi Adı</label>
+          <input type="text" id="card-name" class="form-control" placeholder="Ad Soyad" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="card-number">Kart Numarası</label>
+          <input type="text" id="card-number" class="form-control" placeholder="**** **** **** ****" required maxlength="16">
+        </div>
+        
+        <div class="form-group inline">
+          <div>
+            <label for="expiry-month">Son Kullanma Tarihi</label>
+            <div class="expiry-date">
+              <select id="expiry-month" class="form-control">
+                <option value="" disabled selected>Ay</option>
+                <!-- Ay seçenekleri -->
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <!-- Diğer aylar -->
+              </select>
+              <select id="expiry-year" class="form-control">
+                <option value="" disabled selected>Yıl</option>
+                <!-- Yıl seçenekleri -->
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <!-- Diğer yıllar -->
+              </select>
+            </div>
+          </div>
+          
+          <div>
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" class="form-control" placeholder="CVV" maxlength="3" required>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="card-type">Kart Tipi</label>
+          <select id="card-type" class="form-control">
+            <option value="Visa">Visa</option>
+            <option value="MasterCard">MasterCard</option>
+          </select>
+        </div>
+        
+        <div class="form-actions">
+          <button type="submit" class="btn save-btn">Kaydet</button>
+          <button type="button" class="btn cancel-btn">İptal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Endpoint Rol Atama</h2>
+<mat-dialog-content class="mat-typography">
+   <p>Aşağıdan ilgili rolleri Atayabilirsiniz</p>
+   <mat-selection-list #roles>
+    @for (role of typeOfroles; track role) {
+      <mat-list-option [selected]="selected(role.name)">{{role.name}}</mat-list-option>
+    }
+  </mat-selection-list>
+  
+  <p>
+    Seçilenler: {{roles.selectedOptions.selected.length}}
+  </p>
+  </mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>İptal</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="assignRoles(roles.selectedOptions.selected)">Rolleri Ata</button>
+</mat-dialog-actions>

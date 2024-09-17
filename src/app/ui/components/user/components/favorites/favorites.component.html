@@ -1,0 +1,27 @@
+<div class="col-lg-9">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col" *ngFor="let item of productData">
+        <div class="card h-100 product-card shadow-lg" *ngIf="item.price>=priceRange.min && item.price<=priceRange.max">
+          <div class="position-relative">
+            <img [src]="item.img[0].filePath" class="card-img-top rounded-top" 
+                 (mouseover)="startImageSlideshow(item)" 
+                 (mouseleave)="stopImageSlideshow(item)" 
+                 alt="Product Image">
+            <div class="position-absolute top-0 end-0 p-2 bg-light rounded-circle shadow-sm">
+              <span class="badge bg-success">{{item.price}} TL</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-truncate"><b>{{item.name}}</b></h5>
+            <p class="card-text">{{item.description | slice:0:60}}...</p>
+            <button (click)="addShoppingCart(item)" class="btn btn-primary w-100 mt-2 rounded-pill">Sepete Ekle</button>
+          </div>
+          <div class="card-footer bg-transparent border-top-0">
+            <a (click)="getProduct(item.id)" routerLink="/products/product" 
+               class="btn btn-link text-decoration-none w-100 text-center text-primary">Ürün Detayları</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

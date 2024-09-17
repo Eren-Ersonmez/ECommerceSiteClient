@@ -1,0 +1,49 @@
+<div class="content">
+    <mat-card class="mb-4">
+        <mat-card-header>
+          <mat-card-title style="color: antiquewhite;">Ürün Özellikleri</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Ürün Özelliği</th>
+                <th scope="col">Değeri</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of productAttributes; index as i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ item.attributeName }}</td>
+                <td>{{ item.attributeValue }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    
+      <mat-card class="form-container">
+        <mat-card-header>
+          <mat-card-title style="color: antiquewhite;">Ürün Özelliği Ekleme</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="form-grid">
+            <mat-form-field class="full-width">
+              <mat-label>Özellik Adı</mat-label>
+              <input matInput #txtName>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <mat-label>Özellik Değeri</mat-label>
+              <input matInput #txtValue>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+        <mat-card-actions align="end" class="action-button-container">
+          <button mat-raised-button color="primary" (click)="addFeature(txtName.value, txtValue.value)">
+            Ürün Özelliği Ekle
+          </button>
+          <button mat-button [mat-dialog-close]="true" color="warn">Kapat</button>
+        </mat-card-actions>
+      </mat-card>    
+</div>

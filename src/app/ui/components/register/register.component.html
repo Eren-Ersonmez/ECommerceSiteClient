@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8" id="col-desing">
+      <h1 class="text-center mb-4" style="color: #007bff;">Kayıt Formu</h1>
+      <form [formGroup]="frm" (ngSubmit)="onSubmit(frm.value)" class="row g-3">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="exampleFormControlInput1" class="form-label">İsim</label>
+            <input [ngClass]="{'is-invalid':submitted && frm.controls.name.errors}"
+              type="text" formControlName="name" class="form-control" id="exampleFormControlInput1" placeholder="İsim">
+            <div class="invalid-feedback">
+              <small *ngIf="submitted && frm.controls.name.errors?.required">Lütfen ad kısmını boş geçmeyiniz.</small>
+              <small *ngIf="submitted && (frm.controls.name.errors?.maxlength || frm.controls.name.errors?.minlength)">Lütfen adı 3 ile 20 karakter arasında yazınız.</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="exampleFormControlInput2" class="form-label">Soyisim</label>
+            <input [ngClass]="{'is-invalid':submitted && frm.controls.surname.errors}"
+              type="text" class="form-control" formControlName="surname" id="exampleFormControlInput2" placeholder="Soyisim">
+            <div class="invalid-feedback">
+              <small *ngIf="submitted && frm.controls.surname.errors?.required">Lütfen soyad kısmını boş geçmeyiniz.</small>
+              <small *ngIf="submitted && (frm.controls.surname.errors?.maxlength || frm.controls.surname.errors?.minlength)">Lütfen soyadı 3 ile 20 karakter arasında yazınız.</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="exampleFormControlInput3" class="form-label">Email</label>
+            <input [ngClass]="{'is-invalid':submitted && frm.controls.email.errors}"
+              type="email" class="form-control" formControlName="email" id="exampleFormControlInput3" placeholder="isim@email.com">
+            <div class="invalid-feedback">
+              <small *ngIf="submitted && frm.controls.email.errors?.required">Lütfen emaili boş geçmeyiniz.</small>
+              <small *ngIf="submitted && frm.controls.email.errors?.email">Lütfen emaili doğru formatta giriniz.</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="inputPassword" class="form-label">Şifre</label>
+            <input [ngClass]="{'is-invalid':submitted && frm.controls.password.errors}"
+              type="password" placeholder="Şifre" id="inputPassword" class="form-control" formControlName="password">
+            <div class="invalid-feedback">
+              <small *ngIf="submitted && frm.controls.password.errors?.required">Lütfen şifre kısmını boş geçmeyiniz.</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="inputPasswordAgain" class="form-label">Şifre Tekrarı</label>
+            <input [ngClass]="{'is-invalid':submitted && frm.controls.passwordAgain.errors}"
+              type="password" placeholder="Şifre Tekrarı" id="inputPasswordAgain" class="form-control" formControlName="passwordAgain">
+            <div class="invalid-feedback">
+              <small *ngIf="submitted && frm.controls.passwordAgain.errors?.required">Lütfen şifre tekrarını boş geçmeyiniz.</small>
+              <small *ngIf="frm.hasError('notSame')">Şifre ve şifre tekrar eşleşmiyor.</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <a class="link-primary" routerLink="/login">Hesabınız Zaten Var mı?</a>
+          <button style="margin-left: 20px;" type="submit" class="btn btn-primary mt-3">Kayıt Ol</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

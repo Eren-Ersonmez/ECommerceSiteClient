@@ -1,0 +1,111 @@
+<form method="post">
+    <div class="container py-5">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Adres ve Ödeme Bilgileri</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <!-- Adres Bilgileri -->
+                    <div class="col-md-6">
+                        <h5 class="mb-4">Adres Bilgileri</h5>
+                        <div class="mb-3">
+                            <label for="inputName" class="form-label">Adınız</label>
+                            <input type="text" class="form-control" id="inputName" #txtName placeholder="Adınızı girin">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputSurname" class="form-label">Soyadınız</label>
+                            <input type="text" class="form-control" id="inputSurname" #txtSurname placeholder="Soyadınızı girin">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputTitle" class="form-label">Adres Başlığı</label>
+                            <input type="text" class="form-control" id="inputTitle" #txtTitle placeholder="Adres başlığı girin">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputAddress" class="form-label">Adres</label>
+                            <input type="text" class="form-control" id="inputAddress" #txtAddress placeholder="Adresinizi girin">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputCity" class="form-label">Şehir</label>
+                            <input type="text" class="form-control" id="inputCity" #txtCity placeholder="Şehir girin">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputDistrict" class="form-label">Semt</label>
+                            <input type="text" class="form-control" id="inputDistrict" #txtDistrict placeholder="Semt girin">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputPhoneNumber" class="form-label">Telefon</label>
+                            <input type="tel" class="form-control" id="inputPhoneNumber" #txtPhoneNumber placeholder="Telefon numaranız">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputPostalCode" class="form-label">Posta Kodu</label>
+                            <input type="text" class="form-control" id="inputPostalCode" #txtPostalCode placeholder="Posta kodu girin">
+                        </div>
+                    </div>
+
+                    <!-- Sepet ve Ödeme Bilgileri -->
+                    <div class="col-md-6">
+                        <h5 class="mb-4">Sepet ve Ödeme Bilgileri</h5>
+                        <ul class="list-group mb-4">
+                            <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of carts">
+                                <div>
+                                    <h6 class="my-0">{{ item.product.name }}</h6>
+                                    <small class="text-muted">Adet: {{ item.count }}</small>
+                                </div>
+                                <span class="text-muted">{{ item.count * item.product.price }} TL</span>
+                            </li>
+                        </ul>
+                        <div class="mb-3">
+                            <label for="txtCardName" class="form-label">Kart İsmi</label>
+                            <input type="text" class="form-control" id="txtCardName" #txtCardName placeholder="Kart üzerindeki isim">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtCardNumber" class="form-label">Kart Numarası</label>
+                            <input type="text" class="form-control" id="txtCardNumber" #txtCardNumber placeholder="Kart numarası">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="txtExpirationDateMonth" class="form-label">Son Kullanma Ayı</label>
+                                <input type="text" class="form-control" id="txtExpirationDateMonth" #txtExpirationDateMonth placeholder="Ay">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="txtExpirationDateYear" class="form-label">Son Kullanma Yılı</label>
+                                <input type="text" class="form-control" id="txtExpirationDateYear" #txtExpirationDateYear placeholder="Yıl">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtCVC" class="form-label">Güvenlik Kodu (CVC)</label>
+                            <input type="number" class="form-control" id="txtCVC" #txtCVC placeholder="CVC">
+                        </div>
+                        <div class="list-group-item d-flex justify-content-between align-items-center bg-light">
+                            <span class="fw-bold">TOPLAM TUTAR:</span>
+                            <strong>{{ getTotalPrice() }} TL</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="d-grid">
+                    <a
+                        (click)="create(
+                            txtName,
+                            txtSurname,
+                            txtAddress,
+                            txtCity,
+                            txtDistrict,
+                            txtPhoneNumber,
+                            txtPostalCode,
+                            txtCardName,
+                            txtCardNumber,
+                            txtExpirationDateMonth,
+                            txtExpirationDateYear,
+                            txtCVC,
+                            txtTitle
+                         )"
+                        class="btn btn-success btn-lg">Siparişi Tamamla
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

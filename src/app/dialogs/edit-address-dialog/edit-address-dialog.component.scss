@@ -1,0 +1,24 @@
+.dialog-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%; /* Form elemanlarının tam genişliğe yayılması */
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  /* Dialog genişliği ayarlanıyor */
+  .mat-dialog-container {
+    width: 800px; 
+    background-color: rgb(238, 230, 220)
+  }
+  
+  /* Daha küçük ekranlarda responsive uyum */
+  @media (max-width: 800px) {
+    .mat-dialog-container {
+      max-width: 95vw; /* Küçük ekranlarda genişlik daha uygun olur */
+    }
+  }
+  

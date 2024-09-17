@@ -1,0 +1,128 @@
+<div class="container my-5" *ngFor="let item of product; let index = index">
+  <div class="row g-4">
+    <!-- Ürün Resmi ve Galeri -->
+    <div class="col-lg-6">
+      <div class="image-container">
+        <div class="position-relative" *ngIf="firstImage">
+          <!-- Sol Ok İkonu -->
+          <i class="fa fa-chevron-left position-absolute top-50 start-0 translate-middle-y text-dark fs-2"
+          style="cursor: pointer; z-index: 10;" (click)="previousImage()"></i>
+
+          <img [src]="firstImage.filePath" class="img-fluid rounded shadow-lg w-100" alt="Büyük Resim"/>
+          <!-- Sağ Ok İkonu -->
+          <i class="fa fa-chevron-right position-absolute top-50 end-0 translate-middle-y text-dark fs-2"
+          style="cursor: pointer; z-index: 10;" (click)="nextImage()"></i>
+        </div>
+        <div class="product-image mb-3" *ngIf="!firstImage">
+          <img src="assets/no-camera.png" class="img-fluid rounded shadow-lg w-100" alt="No Image"/>
+        </div>
+      </div>
+
+      <!-- Küçük Resimler -->
+      <div class="d-flex justify-content-start gap-2 mt-3" *ngIf="firstImage">
+        <div *ngFor="let img of images" class="img-gallery-item">
+          <img [src]="img.filePath" class="img-thumbnail img-gallery-thumb rounded border" [class.active]="img === firstImage" alt="Ürün Küçük Resim" (click)="changeFirstImage(img)" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Ürün Detayları -->
+    <div class="col-lg-6">
+      <h2 class="product-title mb-3 text-primary">{{ item.name }}</h2>
+      <div class="d-flex align-items-center mb-3">
+        <span class="product-price display-6 fw-bold text-danger">{{ item.price }} TL</span>
+        <span *ngIf="item.stock > 0" class="badge bg-success ms-3 p-2 fs-6">Stokta Var</span>
+        <span *ngIf="!(item.stock > 0)" class="badge bg-danger ms-3 p-2 fs-6">Stokta Kalmadı</span>
+      </div>
+      <p class="product-description text-muted fs-5">{{ item.description }}</p>
+      <h4 *ngIf="productComments.length > 0">{{ productComments.length }} Değerlendirme</h4>
+
+      <!-- Ürün Özellikleri -->
+      <div class="product-features mt-4">
+        <h5>Ürün Özellikleri:</h5>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let attribute of productAttributes">
+            {{ attribute.attributeName }}: {{ attribute.attributeValue }}
+          </li>
+        </ul>
+      </div>
+
+      <!-- Sepete Ekle Butonu -->
+      <div class="d-flex align-items-center mb-4 mt-3">
+        <button class="btn btn-primary btn-lg shadow-lg" (click)="addShoppingCart(item)">
+          <i class="fas fa-shopping-cart me-2"></i>Sepete Ekle
+        </button>
+        <button style="margin-left: 10px;" class="btn btn-outline-danger btn-lg shadow-lg" (click)="addFavoriteProduct()">
+          <i class="fas fa-heart me-2"></i>Favorilere Ekle
+        </button>
+      </div>
+
+      <!-- Teslimat ve İade Bilgileri -->
+      <div class="delivery-info mt-4">
+        <h5>Teslimat ve İade Bilgileri</h5>
+        <p>Kargo süresi: 3-5 iş günü</p>
+        <p>İade süresi: 30 gün içinde koşulsuz iade</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ürün İncelemeleri -->
+  <div class="row mt-5">
+    <div class="col-12">
+      <h4 class="mb-4">Ürün İncelemeleri</h4>
+      <div class="card mb-3 shadow-sm hover-card" *ngFor="let item of productComments">
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-2">
+            <h5 class="card-title mb-0">{{ item.applicationUser.name[0] }}** {{ item.applicationUser.surname[0] }}**</h5>
+          </div>
+          <p class="card-text">{{ item.commentContent }}</p>
+          <p class="text-muted">{{ item.createdDate | date: 'dd.MM.yyyy' }}</p>
+
+          <!-- Beğenme İkonu -->
+          <div class="d-flex align-items-center mt-3">
+            <i class="material-icons like-icon" (click)="liked(item.id)">thumb_up</i>
+            <span *ngIf="item.likeCount > 0">{{ item.likeCount }} beğeni</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Yorum Yapma Kısmı -->
+  <div class="row mt-4">
+    <div class="col-12">
+      <h4 class="mb-3">Yorum Yap</h4>
+      <form (ngSubmit)="onSubmit()" #commentForm="ngForm">
+        <div class="mb-3">
+          <textarea name="comment" [(ngModel)]="comment" class="form-control shadow-sm" rows="4" placeholder="Yorumunuzu buraya yazın..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-success shadow-lg">Yorumu Gönder</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Benzer Ürünler -->
+  <div class="row mt-5">
+    <div class="col-12">
+      <h4 class="mb-4">Benzer Ürünler</h4>
+      <div class="d-flex flex-wrap gap-4">
+        <div class="card shadow-sm hover-card" style="width: 18rem;">
+          <img src="https://via.placeholder.com/200" class="card-img-top" alt="Benzer Ürün">
+          <div class="card-body">
+            <h5 class="card-title">Benzer Ürün 1</h5>
+            <p class="card-text">Kısa açıklama.</p>
+            <a href="#" class="btn btn-outline-primary">İncele</a>
+          </div>
+        </div>
+        <div class="card shadow-sm hover-card" style="width: 18rem;">
+          <img src="https://via.placeholder.com/200" class="card-img-top" alt="Benzer Ürün">
+          <div class="card-body">
+            <h5 class="card-title">Benzer Ürün 2</h5>
+            <p class="card-text">Kısa açıklama.</p>
+            <a href="#" class="btn btn-outline-primary">İncele</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

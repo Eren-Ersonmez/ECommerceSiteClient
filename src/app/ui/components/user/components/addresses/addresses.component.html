@@ -1,0 +1,27 @@
+<div class="address-container">
+  <div class="address-card" *ngFor="let item of addresses">
+    <div class="address-header">
+      <h5>{{item.title}}</h5>
+    </div>
+    <div class="address-body">
+      <p><strong>{{item.addressOwnerName}} {{item.addressOwnerSurname}}</strong></p>
+      <p>{{item.content}}</p>
+      <p>{{item.district}}/{{item.city}}</p>
+      <p>{{item.postalCode}}</p>
+      <p>{{item.phoneNumber}}</p>
+    </div>
+    
+    <!-- Silme butonu sağ üst köşeye yerleştiriliyor -->
+    <button class="delete-btn" 
+      appDelete
+      controller="addresses" 
+      [id]="item.id"
+      (callback)="getAddresses()">
+    </button>
+
+    <div class="address-actions">
+      <button class="edit-btn" (click)="editAddress(item.id,item.applicationUserId)">Adresi Düzenle</button>
+    </div>
+  </div>
+</div>
+<button style="margin:10px 20px;" class="btn btn-primary" (click)="addAddress()">Adres Ekle</button>

@@ -1,0 +1,38 @@
+<div class="profile-update-container">
+    <h2>Profil Bilgilerini Güncelle</h2>
+    
+    <form [formGroup]="frmUserInfo" class="profile-form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="txtName">Ad</label>
+        <input type="text" id="txtName" formControlName="name" placeholder="Ad" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="txtSurname">Soyad</label>
+        <input type="text" id="txtSurname" formControlName="surname" placeholder="Soyad" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="txtBirthDay">Doğum Tarihi</label>
+        <input type="date" id="txtBirthDay" formControlName="birthDay" placeholder="Doğum Tarihi">
+      </div>
+
+      <div class="form-group">
+        <label for="txtPhoneNumber">Telefon</label>
+        <input type="tel" id="txtPhoneNumber" formControlName="phoneNumber" placeholder="Telefon">
+      </div>
+
+      <div class="form-group">
+        <label>Cinsiyet</label>
+        <select class="form-select" aria-label="Default select example" formControlName="gender">
+          <option selected disabled>Cinsiyet</option>
+          <option  value="man">Erkek</option>
+          <option value="woman">Kadın</option>
+          <option value="other">Diğer</option>
+        </select>
+      </div>
+
+      <button type="submit" [disabled]="frmUserInfo.invalid" class="update-btn">Güncelle</button>
+    </form>
+  </div>
+  

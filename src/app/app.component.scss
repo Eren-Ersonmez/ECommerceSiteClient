@@ -1,0 +1,90 @@
+/* Tüm Butonlar ve Linkler için Geçiş Efekti */
+.navbar-nav .nav-link, .btn, .navbar-brand {
+    transition: all 0.3s ease; /* Geçiş süresi ve animasyon tipi */
+}
+
+/* Navbar Linklerinin :hover Durumunda Efektleri */
+.navbar-nav .nav-link:hover {
+    color: #007bff; /* Linkin üzerine gelindiğinde renk değişimi */
+    text-decoration: underline; /* Altı çizili efekt */
+    transform: scale(1.05); /* Hafif büyüme efekti */
+}
+
+/* Butonların :hover Durumunda Efektleri */
+.btn:hover {
+    background-color: #28a745; /* Butonun arka plan rengini değiştir */
+    color: #fff; /* Metin rengini beyaz yap */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+    transform: translateY(-2px); /* Yükseklik değişimi ile hover efekti */
+}
+
+/* Marka Adı (Navbar Brand) :hover Efekti */
+.navbar-brand:hover {
+    color: #dc3545; /* Hover durumunda marka adının rengi */
+    transform: scale(1.1); /* Hafif büyütme efekti */
+}
+/* Açılır Menü Stili */
+.nav-item.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none; /* Başlangıçta gizle */
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
+    z-index: 1000;
+    top: 30px; /* Butondan biraz aşağıda göster */
+    right: 0; /* Sağ hizalı */
+    transition: all 0.3s ease;
+}
+
+/* HESABIM Butonu Hover Durumunda Menü Görünür Olur */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Dropdown içindeki elemanlar */
+.dropdown-item {
+    margin: 5px 0;
+    color: #333;
+}
+
+.dropdown-item a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.dropdown-item a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Hesabım Butonu Geçiş Efekti */
+.nav-item.dropdown > .btn {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-item.dropdown > .btn:hover {
+    background-color: #0056b3;
+    color: white;
+}
+.btn-custom {
+    background-color: #007bff; /* Arka plan rengi */
+    color: #fff; /* Metin rengi */
+    border-radius: 50px; /* Yuvarlak köşeler */
+    padding: 10px 20px; /* İç boşluk */
+    font-size: 16px; /* Yazı boyutu */
+    font-weight: bold; /* Yazı kalınlığı */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Geçiş efekti */
+    text-decoration: none;
+  }
+  
+  .btn-custom:hover {
+    background-color: #0056b3; /* Hover durumunda arka plan rengi */
+    transform: scale(1.05); /* Hover durumunda büyüme efekti */
+  }
